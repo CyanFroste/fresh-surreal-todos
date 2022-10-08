@@ -3,7 +3,7 @@ import Header from '../components/Header.tsx'
 import TodoManager from '../islands/TodoManager.tsx'
 import type { Todo } from '../types.ts'
 
-export const handler: Handlers<Todo[] | null> = {
+export const handler: Handlers<Todo[]> = {
   async GET(_, ctx) {
     const res = await fetch(`http://localhost:8000/api/todos`)
     const json = await res.json()

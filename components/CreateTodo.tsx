@@ -1,12 +1,15 @@
 import type { TodoDTO } from '../types.ts'
 
-type Props = { onSubmit: (value: TodoDTO) => void }
+type Props = { onSubmit?: (value: TodoDTO) => void }
 
 export default function CreateTodo({ onSubmit }: Props) {
   return (
     <form
       class="flex gap-4 bg-green-50 p-4 mb-6 rounded"
+      method="POST"
+      action="/ssr/todos"
       onSubmit={event => {
+        if (!onSubmit) return
         event.preventDefault()
 
         const title = (
